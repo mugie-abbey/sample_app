@@ -14,3 +14,8 @@ class Tenant(Document):
 
 		if self.age > 30:
 			frappe.throw("Tenant age cannot be greater than 30")
+
+
+@frappe.whitelist()
+def get_count():
+	return frappe.db.count("Tenant", filters={"adult": 1})
